@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use File;
 use Validator;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,7 +57,10 @@ class UserInfoController extends Controller
                       $fileextension = $request->file('upload_image')->getClientOriginalExtension();
                       $filename = rand().'_'.time().".".$fileextension;
                       $path = $request->file('upload_image')->storeAs('public/UserImage',$filename); //store images in the folder
-
+                        $path = public_path('/storage/UserImage/'.$data->user_image);
+                              if (File::exists($path)) {
+                                  File::delete($path);
+                              }
                 }
                   
 
