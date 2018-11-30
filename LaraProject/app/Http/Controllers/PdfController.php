@@ -16,13 +16,13 @@ class PdfController extends Controller  // aliases: 'PDF' => Barryvdh/DomPDF/Fac
     public function convert_customer_data_to_html(){
     	$players_data = DB::table('infos')->orderBy('id','desc')->get();
     	$output = '<h3 align="center">Customer Data</h3>
-    	<table width ="100%" style="border-collapse; border:0px;">
+    	<table width ="90%" style="border-collapse; border:0px;">
     	<tr>
-    	<th style="border: 1px solid; padding:12px;" width="35%">Country Image</th>
+    	<th style="border: 1px solid; padding:12px;" width="30%">Country Image</th>
     	<th style="border: 1px solid; padding:12px;" width="15%">Name</th>
     	<th style="border: 1px solid; padding:12px;" width="15%">Age</th>
     	<th style="border: 1px solid; padding:12px;" width="15%">Gender</th>
-    	<th style="border: 1px solid; padding:12px;" width="20%">Email</th>
+    	<th style="border: 1px solid; padding:12px;" width="15%">Email</th>
     	</tr>';
     	foreach($players_data as $data){
     		$output .= '<tr>
