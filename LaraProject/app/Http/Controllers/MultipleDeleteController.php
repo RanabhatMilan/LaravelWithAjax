@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DB;
+use File;
 class MultipleDeleteController extends Controller
 {
       public function multidelete(Request $request){
@@ -16,7 +17,10 @@ class MultipleDeleteController extends Controller
     
             if ($data->user_image != 'noImage.jpg') {
             Storage::delete('public/UserImage/'.$data->user_image);
-        
+            $path = public_path('/storage/UserImage/'.$data->user_image);
+              if (File::exists($path)) {
+                  File::delete($path);
+              }
       }
     }  
       $dataaa = DB::table('infos')->whereIn('id',$array_id)->delete();
