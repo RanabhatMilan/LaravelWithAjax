@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('');
-});
 
 
 Route::get('/','UserInfoController@show');
